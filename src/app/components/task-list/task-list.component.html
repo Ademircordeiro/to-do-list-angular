@@ -1,0 +1,22 @@
+<section class="task-list-section">
+  @if (tasks().length > 0) {
+    <ul class="task-list">
+      @for (item of tasks(); track item.id) {
+        <app-task-item [task]="item"></app-task-item>
+      }
+    </ul>
+  } @else {
+    <div class="empty-state">
+      <div class="empty-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M8 12h8"></path>
+          <path d="M12 8v8"></path>
+        </svg>
+      </div>
+      <h3 class="empty-title">Sem tarefas por aqui</h3>
+      <p class="empty-desc">{{ emptyStateMessage }}</p>
+    </div>
+  }
+</section>
+

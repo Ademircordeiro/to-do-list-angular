@@ -1,0 +1,73 @@
+<div class="filter-container">
+  <!-- Campo de Busca -->
+  <div class="search-box">
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchChange()"
+      placeholder="Filtrar por texto ou categoria..."
+      class="search-input"
+    />
+    @if (searchQuery) {
+      <button class="clear-search-btn" (click)="clearSearch()" title="Limpar busca">
+        &times;
+      </button>
+    }
+  </div>
+
+  <div class="filter-actions">
+    <!-- Abas de Filtro de Status -->
+    <div class="filter-tabs">
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="currentFilter() === 'todas'"
+        (click)="setFilter('todas')"
+      >
+        Todas
+        <span class="count-badge">{{ stats().total }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="currentFilter() === 'pendentes'"
+        (click)="setFilter('pendentes')"
+      >
+        Pendentes
+        <span class="count-badge">{{ stats().pending }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="tab-btn"
+        [class.active]="currentFilter() === 'concluidas'"
+        (click)="setFilter('concluidas')"
+      >
+        Concluídas
+        <span class="count-badge">{{ stats().completed }}</span>
+      </button>
+    </div>
+
+    <!-- Limpar Concluídas -->
+    @if (stats().completed > 0) {
+      <button
+        type="button"
+        class="btn-clear-completed"
+        (click)="clearCompleted()"
+        title="Remover tarefas concluídas"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </svg>
+        <span>Limpar Concluídas</span>
+      </button>
+    }
+  </div>
+</div>
+

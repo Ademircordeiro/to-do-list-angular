@@ -1,0 +1,245 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.task-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateX(2px);
+}
+
+.task-item.completed {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  opacity: 0.8;
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.check-icon {
+  display: none;
+  color: #ffffff;
+}
+
+.checkbox-container:hover .custom-checkbox {
+  border-color: #6366f1;
+}
+
+.checkbox-container input:checked ~ .custom-checkbox {
+  background-color: #10b981;
+  border-color: #10b981;
+}
+
+.checkbox-container input:checked ~ .custom-checkbox .check-icon {
+  display: block;
+}
+
+/* Conteúdo */
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title-row {
+  margin-bottom: 4px;
+}
+
+.task-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e293b;
+  word-break: break-word;
+  transition: color 0.15s ease;
+  cursor: pointer;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.category-badge {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.priority-baixa {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.priority-media {
+  background-color: #fffbeb;
+  color: #b45309;
+}
+
+.priority-alta {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+.task-date {
+  font-size: 0.725rem;
+  color: #94a3b8;
+  margin-left: auto;
+}
+
+/* Ações */
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.task-item:hover .task-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #64748b;
+}
+
+.edit-btn:hover {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+
+.delete-btn:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Modo Edição */
+.edit-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: 1.5px solid #6366f1;
+  border-radius: 8px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-save {
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .task-item {
+    padding: 12px 14px;
+  }
+
+  .task-actions {
+    opacity: 1;
+  }
+
+  .task-date {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .edit-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .edit-actions {
+    justify-content: flex-end;
+  }
+}
+

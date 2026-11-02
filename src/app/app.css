@@ -1,0 +1,30 @@
+.app-layout {
+  min-height: 100vh;
+  padding: 40px 20px 60px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 680px;
+}
+
+.app-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.app-footer p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .app-layout {
+    padding: 20px 12px 40px;
+  }
+}
+
